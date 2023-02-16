@@ -1,57 +1,49 @@
 import React, { Component } from 'react';
-
+import publications from './Data/publications.json';
 import Container from './Container';
+import Controls from './Controls/Controls';
+import Progress from './Progress';
+import Publications from './Publications';
+
+const LS_KEY = 'reader_item_index';
 
 class App extends Component {
   state = {
-    showModal: false
+    index: 0,
+    items: publications
   };
 
-   // componentDidMount() {
-  //   const todos = localStorage.getItem('todos');
-  //   const parsedTodos = JSON.parse(todos);
+  componentDidMount() {
+    const savedState = localStorage.getItem(LS_KEY);
+    if (savedState) {
+      this.setState({index: Number(savedState)});
+    }
+  }
 
-  //   if (parsedTodos) {
-  //     this.setState({ todos: parsedTodos });
-  //   }
-    
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.index !== this.state.index) {
+      localStorage.setItem(LS_KEY, this.state.index);
+    }
+  }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.todos !== prevState.todos) {
-  //     localStorage.setItem('todos', JSON.stringify(this.state.todos));
-  //   }
-  // }
-
-  toggleModal =() => {
-    this.setState(state => ({
-      showModal: !state.showModal
-    }))
-  } 
+  changeIndex = value => {
+    this.setState(state => ({ index: state.index + value }));
+  };
 
   render() {
-    const { showModal } = this.state;
+    const { index, items } = this.state;
+    const currentItem = items[index];
+    const totalItems = items.length;
+
     return (
-      <Container>
-        <button type="button" onClick={this.toggleModal}>
-          Открыть модалку
-        </button>
-        {/* Если showModal=true рендерим <Modal /> */}
-        {showModal && (
-          <Modal>
-            <h1>Привет это контент модалки как children</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-              Quae cumque reiciendis pariatur deserunt tempora adipisci eaque ipsam, 
-              incidunt libero in soluta numquam commodi sapiente nulla doloribus 
-              cum saepe dicta eligendi.
-            </p>
-            <button type='button' onClick={this.toggleModal}>
-              Закрыть
-            </button>
-          </Modal>
-        )}
-        
+      <Container items={publications}>
+        <Controls 
+          current={index} 
+          total={totalItems} 
+          onChange={this.changeIndex} 
+        />
+        <Progress current={index + 1} total={totalItems} />
+        <Publications title={currentItem.title} text={currentItem.text} />
       </Container>
     );
   }
