@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import publications from './Data/publications.json';
 import Container from './Container';
-import Controls from './Controls/Controls';
+import Controls from './Controls';
 import Progress from './Progress';
 import Publications from './Publications';
 

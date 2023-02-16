@@ -1,4 +1,6 @@
-const Controls = ({ current, total, onChange }) => {
+import PropTypes from 'prop-types';
+
+function Controls({ current, total, onChange }) {
     return (
         <section>
             <button 
@@ -17,6 +19,12 @@ const Controls = ({ current, total, onChange }) => {
             </button>
         </section>
     );
+};
+
+Controls.propTypes = {
+    current:  PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default Controls;
