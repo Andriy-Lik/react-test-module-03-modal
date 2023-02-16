@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-test-module-03-modal/static/css/main.7acaea2f.css",
-    "main.js": "/react-test-module-03-modal/static/js/main.07d3183d.js",
-    "index.html": "/react-test-module-03-modal/index.html",
-    "main.7acaea2f.css.map": "/react-test-module-03-modal/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-test-module-03-modal/static/js/main.07d3183d.js.map"
+    "main.css": "/react-test-module-03-reader/static/css/main.1fc755a0.css",
+    "main.js": "/react-test-module-03-reader/static/js/main.793163f6.js",
+    "index.html": "/react-test-module-03-reader/index.html",
+    "main.1fc755a0.css.map": "/react-test-module-03-reader/static/css/main.1fc755a0.css.map",
+    "main.793163f6.js.map": "/react-test-module-03-reader/static/js/main.793163f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.1fc755a0.css",
+    "static/js/main.793163f6.js"
   ]
 }
